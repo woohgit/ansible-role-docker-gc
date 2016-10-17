@@ -1,0 +1,8 @@
+---
+exclude_from_gc: []
+exclude_containers_from_gc: []
+force_image_removal: 0
+force_container_removal: 0
+grace_period: 3600
+gc_frequency: "hourly"
+docker_sock: "/var/run/docker.sock"

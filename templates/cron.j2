@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -e "FORCE_IMAGE_REMOVAL={{ force_image_removal }}" -e "FORCE_CONTAINER_REMOVAL={{force_container_removal}}" -e "GRACE_PERIOD_SECONDS={{ grace_period }}" --rm -v {{ docker_sock }}:/var/run/docker.sock -v /etc:/etc spotify/docker-gc

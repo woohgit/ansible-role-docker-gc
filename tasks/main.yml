@@ -1,0 +1,26 @@
+---
+- name: Create image exclusions file
+  template:
+    src: "exclude_from_gc.j2"
+    dest: "/etc/docker-gc-exclude"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  when: exclude_from_gc
+
+- name: Create container exclusion file
+  template:
+    src: "exclude_container_from_gc.j2"
+    dest: "/etc/docker-gc-exclude-containers"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  when: exclude_containers_from_gc
+
+- name: Create cron
+  template:
+    src: "cron.j2"
+    dest: "/etc/cron.{{ gc_frequency }}/docker-gc"
+    owner: "root"
+    group: "root"
+    mode: "0744"
