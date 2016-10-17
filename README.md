@@ -1,7 +1,7 @@
 Ansible Role: docker-gc
 =========
 
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-woohgit.docker-gc-blue.svg)](https://galaxy.ansible.com/woohgit/docker-gc/) [![Build Status](https://travis-ci.org/woohgit/ansible-role-docker-gc.svg?branch=master)](https://travis-ci.org/woohgit/ansible-role-teleport)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-woohgit.docker--gc-blue.svg)](https://galaxy.ansible.com/woohgit/docker-gc/) [![Build Status](https://travis-ci.org/woohgit/ansible-role-docker-gc.svg?branch=master)](https://travis-ci.org/woohgit/ansible-role-teleport)
 
 
 An ansible role that sets up docker garbage collection using [spotify/docker-gc](https://github.com/spotify/docker-gc)
