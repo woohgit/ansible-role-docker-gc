@@ -1,5 +1,7 @@
 ---
+
 - name: Create image exclusions file
+  tags: docker
   template:
     src: "exclude_from_gc.j2"
     dest: "/etc/docker-gc-exclude"
@@ -9,6 +11,7 @@
   when: exclude_from_gc
 
 - name: Create container exclusion file
+  tags: docker
   template:
     src: "exclude_container_from_gc.j2"
     dest: "/etc/docker-gc-exclude-containers"
@@ -18,9 +21,20 @@
   when: exclude_containers_from_gc
 
 - name: Create cron
+  tags: docker
   template:
     src: "cron.j2"
     dest: "/etc/cron.{{ gc_frequency }}/docker-gc"
     owner: "root"
     group: "root"
     mode: "0744"
+
+- name: Remove other cron entries
+  tags: docker
+  file: path=/etc/cron.{{ item.id }}/docker-gc state=absent
+  with_items:
+    - { id: "hourly", remove: "{{ 'hourly' != gc_frequency }}" }
+    - { id: "daily", remove: "{{ 'daily' != gc_frequency }}" }
+    - { id: "weekly", remove: "{{ 'weekly' != gc_frequency }}" }
+    - { id: "monthly", remove: "{{ 'monthly' != gc_frequency }}" }
+  when: item.remove | default(False) | bool

@@ -45,9 +45,9 @@ By default, if an error is encountered when cleaning up a container, Docker will
 
 By default, docker-gc will not remove a container if it exited less than 3600 seconds (1 hour) ago. In some cases you might need to change this setting.
 
-	gc_frequency:  "hourly"
+	gc_frequency: "hourly"
 
-How frequent should docker-gt run. Valid values are: `"hourly", "daily", "weekly", "monthly"`
+How frequent should docker-gc run. Valid values are: `"hourly", "daily", "weekly", "monthly"`
 
 	docker_sock: "/var/run/docker.sock"
 
